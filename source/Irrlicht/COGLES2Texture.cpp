@@ -18,7 +18,10 @@
 
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
+
+#ifdef _IRR_COMPILE_WITH_EGL_
 #include <EGL/egl.h>
+#endif
 
 namespace irr
 {

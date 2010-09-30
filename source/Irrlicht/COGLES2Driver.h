@@ -24,7 +24,10 @@
 
 #ifdef _IRR_COMPILE_WITH_OGLES2_
 
+#ifdef _IRR_COMPILE_WITH_EGL_
 #include <EGL/eglplatform.h>
+#endif
+
 #ifndef GL_BGRA
 // we need to do this for the IMG_BGRA8888 extension
 extern int GL_BGRA;
@@ -448,10 +451,13 @@ namespace irr
 #ifdef _IRR_COMPILE_WITH_WINDOWS_DEVICE_
             HDC HDc;
 #endif
+
+#ifdef _IRR_COMPILE_WITH_EGL_
             NativeWindowType EglWindow;
             void* EglDisplay;
             void* EglSurface;
             void* EglContext;
+#endif
 
             COGLES2FixedPipelineShader* FixedPipeline;
             COGLES2Renderer2d* TwoDRenderer;

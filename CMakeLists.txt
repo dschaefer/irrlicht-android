@@ -11,12 +11,17 @@ include_directories(
 	source/Irrlicht/zlib
 	source/Irrlicht/jpeglib
 	source/Irrlicht/libpng
+	)
+
+if(MSVC)
+include_directories(
 	"C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include"
 	)
 
 link_directories(
 	"C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Lib/x64"
 	)
+endif(MSVC)
 	
 add_definitions(-DPNG_THREAD_UNSAFE_OK -DPNG_NO_MMX_CODE -DPNG_NO_MNG_FEATURES
 	-DIRRLICHT_EXPORTS
@@ -339,7 +344,9 @@ add_library(irrlicht SHARED
 	source/Irrlicht/bzip2/bzlib.c
 	)
 
+if(MSVC)
 target_link_libraries(irrlicht gdi32 opengl32 d3dx9d winmm)
+endif(MSVC)
 
 if(NOT ANDROID)
 add_executable(01.HelloWorld examples/01.HelloWorld/main.cpp)

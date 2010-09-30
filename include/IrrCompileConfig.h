@@ -25,6 +25,7 @@
 //! _IRR_SOLARIS_PLATFORM_ for Solaris
 //! _IRR_OSX_PLATFORM_ for Apple systems running OSX
 //! _IRR_IPHONE_PLATFORM_ for Apple iPhone OS
+//! _IRR_ANDROID_PLATFORM_ for Android
 //! _IRR_POSIX_API_ for Posix compatible systems
 //! Note: PLATFORM defines the OS specific layer, API can group several platforms
 
@@ -94,8 +95,13 @@
 #endif
 #endif
 
+#if defined(ANDROID)
+#define _IRR_ANDROID_PLATFORM_
+#define _IRR_POSIX_API_
+#define _IRR_COMPILE_WITH_OGLES2_ // could also be OGLES1
+#endif
 
-#if !defined(_IRR_WINDOWS_API_) && !defined(_IRR_OSX_PLATFORM_)
+#if !defined(_IRR_WINDOWS_API_) && !defined(_IRR_OSX_PLATFORM_) && !defined(_IRR_ANDROID_PLATFORM_)
 #ifndef _IRR_SOLARIS_PLATFORM_
 #define _IRR_LINUX_PLATFORM_
 #endif
@@ -154,6 +160,12 @@ it should be usually the only HW accelerated one. OpenGL is currently disabled
 if using this driver, to avoid problems with the ogl-es emulators.
 */
 //#define _IRR_COMPILE_WITH_OGLES2_
+
+//! Define _IRR_COMPILE_WITH_EGL_ to compile the Irrlicht engine with EGL support for OpenGL-ES
+/** This is generally the default but if you use a platform that manages EGL itself then
+ *  you need to turn it off
+ */
+//#define _IRR_COMPILE_WITH_EGL_
 
 //! Define _IRR_COMPILE_WITH_SOFTWARE_ to compile the Irrlicht engine with software driver
 /** If you do not need the software driver, or want to use Burning's Video instead,
@@ -552,6 +564,13 @@ precision will be lower but speed higher. currently X86 only
 	#undef _IRR_COMPILE_WITH_OPENGL_
 	#undef _IRR_COMPILE_WITH_OGLES2_
 #endif
+
+// Use EGL if not Android
+#if defined(_IRR_COMPILE_WITH_OGLES1_) || defined(_IRR_COMPILE_WITH_OGLES2_)
+#ifndef _IRR_ANDROID_PLATFORM_
+#define _IRR_COMPILE_WITH_EGL_
+#endif // Android
+#endif // GLES
 
 #ifndef _IRR_WINDOWS_API_
 	#undef _IRR_WCHAR_FILESYSTEM
