@@ -37,6 +37,7 @@
 #define _HMAC_H
 
 #include <memory.h>
+#include <string.h>
 
 #define USE_SHA1
 #if !defined(USE_SHA1) && !defined(USE_SHA256)
