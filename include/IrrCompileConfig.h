@@ -98,6 +98,7 @@
 #if defined(ANDROID)
 #define _IRR_ANDROID_PLATFORM_
 #define _IRR_POSIX_API_
+#define _IRR_COMPILE_WITH_ANDROID_DEVICE_
 #define _IRR_COMPILE_WITH_OGLES2_ // could also be OGLES1
 #endif
 

@@ -223,6 +223,7 @@ add_library(irrlicht SHARED
 	source/Irrlicht/CIrrDeviceStub.cpp
 	source/Irrlicht/CIrrDeviceWin32.cpp
 	source/Irrlicht/CIrrDeviceFB.cpp
+	source/Irrlicht/CIrrDeviceAndroid.cpp
 	source/Irrlicht/CLogger.cpp
 	source/Irrlicht/COSOperator.cpp
 	source/Irrlicht/Irrlicht.cpp
