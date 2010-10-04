@@ -29,6 +29,10 @@ namespace irr
 		/** This device should be used with the OpenGL-ES driver. */
 		EIDT_IPHONE,
 
+		//! A device native to Android
+		/** This device should be used with the OpenGL-ES driver. */
+		EIDT_ANDROID,
+
 		//! A device which uses Simple DirectMedia Layer
 		/** The SDL device works under all platforms supported by SDL but first must be compiled
 		in by defining the IRR_USE_SDL_DEVICE macro in IrrCompileConfig.h */

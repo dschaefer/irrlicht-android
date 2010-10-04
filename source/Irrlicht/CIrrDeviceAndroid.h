@@ -11,17 +11,33 @@
 
 #include "CIrrDeviceStub.h"
 #include "IImagePresenter.h"
+#include "os.h"
 
 namespace irr
 {
 	class CIrrDeviceAndroid : public CIrrDeviceStub, public video::IImagePresenter
 	{
+	public:
 		CIrrDeviceAndroid(const SIrrlichtCreationParameters& param);
 
 		virtual ~CIrrDeviceAndroid();
 
-	private:
+		virtual bool run();
+		virtual void yield();
+		virtual void sleep(u32 timeMs, bool pauseTimer=false);
+		virtual void setWindowCaption(const wchar_t* text);
+		virtual bool isWindowActive() const;
+		virtual bool isWindowFocused() const;
+		virtual bool isWindowMinimized() const;
+		virtual void closeDevice();
+		virtual void setResizable(bool resize=false);
+		virtual void minimizeWindow();
+		virtual void maximizeWindow();
+		virtual void restoreWindow();
+		virtual E_DEVICE_TYPE getType() const;
+		virtual bool present(video::IImage* surface, void* windowId=0, core::rect<s32>* src=0 );
 
+	private:
 		void createDriver();
 	};
 }
